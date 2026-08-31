@@ -75,6 +75,7 @@ p.slogan {
   color:#030711;
 }
 
+@scope (header) {
 /* BUTTON */
 /* Hier krijgt de <button> de styling. */
 button {
@@ -130,12 +131,14 @@ button svg:nth-of-type(2) {
   
   transition-delay: 0ms;
 }
+}
+
+
 
 /* IMG */
 /* Hier krijgt het <img> element de styling. */
 img {
   position: relative;
-  top: 2rem;
   
   width: 10em;
   height: auto;
@@ -160,7 +163,7 @@ dl {
   align-items: start;
   
   width: 100%;
-  margin-top: -3rem;
+  margin-top: 0rem;
   margin-bottom: 0;
   padding: 5rem 0 3rem;
   
@@ -229,12 +232,12 @@ body.is-expanded article {
   max-width: 60vw;
 }
 
-body.is-expanded button svg:first-of-type {
+body.is-expanded header button svg:first-of-type {
   opacity: 0;
   transition-delay: 0ms;
 }
 
-body.is-expanded button svg:nth-of-type(2) {
+body.is-expanded header button svg:nth-of-type(2) {
   opacity: 1;
   transition-delay: .25s;
 }
