@@ -2,13 +2,13 @@
   font-family: "Alegreya";
   font-style:  normal;
   font-feature-settings: "lnum", "tnum";
-  src: url("/assets/Alegreya-Regular.ttf")
+  src: url("../assets/Alegreya-Regular.ttf")
 }
 
 @font-face {
   font-family: "Alegreya";
   font-style:  italic;
-  src: url("/assets/Alegreya-Italic.ttf")
+  src: url("../assets/Alegreya-Italic.ttf")
 }
 
 
@@ -106,9 +106,10 @@ button:hover {
   background: darkgoldenrod;
 }
 /* Met de 'Pseudo-class selector' :focus kan je bepalen hoe het element er uit moet zien als de tab toets op het toetsenbord wordt gebruikt. */
-button:focus {
+button:focus, button.actief, button:hover {
   outline: none;
   background: darkgoldenrod;
+  color: lightyellow;
 }
 
 nav {
@@ -121,46 +122,47 @@ nav {
 
 nav > button {
   font-size: 1rem;
+  padding: 10px;
 }
 
 @scope (header) {
 /* BUTTON */
 /* Hier krijgt de <button> de styling. */
-button {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: .25rem;
-  
-  scale:.8;
-}
+  button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .25rem;
+    
+    scale:.8;
+  }
 
-/* In het <button> element staat een <svg> voor het icoon. */
-/* Met een spatie worden alle elementen geselecteerd die in een ander element staan. */
-button svg {
-  position: absolute;
-  top: calc(1.25rem - 12px);
-  left: calc(1.25rem - 12px);
-  
-  stroke: #4e54c8;
-  
-  transition: .25s;
-  transition-delay: .25s; /* Een transitie op het <svg> element begin 0.25 seconde later. */
-}
-/* Met een komma wordt in een keer de styling op de :hover en de :focus van het <svg> element bepaald. */
-button:hover svg, button:focus svg {
-  stroke: lightyellow;
-}
-/* Met de 'Pseudo-class selector' :nth-of-type() wordt een element geselecteerd op basis van de volgorde. */
-/* Hier wordt het tweede <svg> element in de button geselecteerd. */
-button svg:nth-of-type(2) {
-  opacity: 0;
-  
-  transition-delay: 0ms;
-}
+  /* In het <button> element staat een <svg> voor het icoon. */
+  /* Met een spatie worden alle elementen geselecteerd die in een ander element staan. */
+  button svg {
+    position: absolute;
+    top: calc(1.25rem - 12px);
+    left: calc(1.25rem - 12px);
+    
+    stroke: #4e54c8;
+    
+    transition: .25s;
+    transition-delay: .25s; /* Een transitie op het <svg> element begin 0.25 seconde later. */
+  }
+  /* Met een komma wordt in een keer de styling op de :hover en de :focus van het <svg> element bepaald. */
+  button:hover svg, button:focus svg {
+    stroke: lightyellow;
+  }
+  /* Met de 'Pseudo-class selector' :nth-of-type() wordt een element geselecteerd op basis van de volgorde. */
+  /* Hier wordt het tweede <svg> element in de button geselecteerd. */
+  button svg:nth-of-type(2) {
+    opacity: 0;
+    
+    transition-delay: 0ms;
+  }
 }
 
 
