@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Alegreya";
+  font-style:  normal;
+  font-feature-settings: "lnum", "tnum";
+  src: url("/assets/Alegreya-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Alegreya";
+  font-style:  italic;
+  src: url("/assets/Alegreya-Italic.ttf")
+}
+
+
 * {
   box-sizing: border-box; /* uitleg over wat dit is */
 }
@@ -19,9 +33,9 @@ body {
   justify-content: center;
   align-items: center;
   
-  height: 100vh;
+  height: fit-content;
   
-  font-family: open sans;
+  font-family: "Alegreya";
   color: #10214e; /* de tekst kleur wordt in hex kleuren bepaald. */
 }
 
@@ -75,24 +89,13 @@ p.slogan {
   color:#030711;
 }
 
-@scope (header) {
-/* BUTTON */
-/* Hier krijgt de <button> de styling. */
 button {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: .25rem;
-  
+  font-family: "Alegreya";
+
   border: none;
   border-radius: 50%; /* De border-radius geeft de <button> ronde hoekjes. */
   background: rgb(0 239 255);
-  
-  scale:.8;
-  
+
   transition: .25s; /* Transities op het <button> element duren 0.25 seconden. */
 }
 
@@ -106,6 +109,33 @@ button:hover {
 button:focus {
   outline: none;
   background: darkgoldenrod;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+nav > button {
+  font-size: 1rem;
+}
+
+@scope (header) {
+/* BUTTON */
+/* Hier krijgt de <button> de styling. */
+button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: .25rem;
+  
+  scale:.8;
 }
 
 /* In het <button> element staat een <svg> voor het icoon. */
@@ -143,9 +173,10 @@ img {
   width: 10em;
   height: auto;
   
-  border: 5px solid #fff;
-  border-radius: 10em;
-  box-shadow: 0 0 2px 2px rgb(0 0 0 /.2);
+  /* border: 5px solid #fff; */
+  /* border-radius: 0; */
+  /* box-shadow: 0 0 2px 2px rgb(0 0 0 /.2); */
+  padding: 5px;
   
   transition: 1s .15s; /* Transition Shorthand notation: Transities op het img element duren 1 seconde en beginnen 0.15 seconde later */
 }
