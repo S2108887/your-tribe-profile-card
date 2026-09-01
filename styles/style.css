@@ -106,7 +106,7 @@ button:hover {
   background: darkgoldenrod;
 }
 /* Met de 'Pseudo-class selector' :focus kan je bepalen hoe het element er uit moet zien als de tab toets op het toetsenbord wordt gebruikt. */
-button:focus, button.actief, button:hover {
+button:focus, button:hover {
   outline: none;
   background: darkgoldenrod;
   color: lightyellow;
@@ -120,9 +120,56 @@ nav {
   margin-bottom: 5px;
 }
 
-nav > button {
+nav > label {
   font-size: 1rem;
   padding: 10px;
+
+  border-radius: 50%;
+  background: rgb(0 239 255);
+
+  transition: .25s;
+}
+
+nav {
+  label:has(> input:checked), label:hover {
+    background: darkgoldenrod;
+    color: lightyellow;
+  }
+}
+
+nav input {
+  display: none;
+}
+
+dl {
+  display: none;
+  background-color: white;
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+html:has( [value="leerdoelen"]:checked) {
+  dl:nth-of-type(1) {
+    display: block;
+  }
+}
+
+html:has( [value="bijbaan"]:checked) {
+  dl:nth-of-type(2) {
+    display: block;
+  }
+}
+
+html:has( [value="hobbies"]:checked) {
+  dl:nth-of-type(3) {
+    display: block;
+  }
 }
 
 @scope (header) {
@@ -183,59 +230,6 @@ img {
   transition: 1s .15s; /* Transition Shorthand notation: Transities op het img element duren 1 seconde en beginnen 0.15 seconde later */
 }
 
-/* Uitleg over het DL element */
-/* DT en DD nesten? Nog even over nadenken ... */
-dl {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "html-dd css-dd js-dd"
-    "html-dt css-dt js-dt"
-    ;
-  justify-items: center;
-  align-items: start;
-  
-  width: 100%;
-  margin-top: 0rem;
-  margin-bottom: 0;
-  padding: 5rem 0 3rem;
-  
-  text-align: center;
-  background: rgb(255 255 255);
-
-  dt {
-    margin-top: .25rem;
-    padding-top: .25rem;
-    
-    border-top: 1px solid rgb(0 0 0 / 0.3);
-    font-weight: bold;
-    
-    &:nth-of-type(1) {
-      grid-area: html-dt;
-    }
-    
-    &:nth-of-type(2) {
-      grid-area: css-dt;
-      translate:0 1rem;
-    }
-    
-    &:nth-of-type(3) {
-      grid-area: js-dt;
-    }
-  }
-
-  dd {
-    margin: 0;
-    padding-left: .3rem;
-    
-    transition: .25s .3s;
-    
-    &:nth-of-type(2) {
-      translate:0 1rem;
-    }
-  }
-}
-
 /* P */
 /* Hier krijgen alle <p> elementen een styling. */
 p {
@@ -275,8 +269,10 @@ body.is-expanded header button svg:nth-of-type(2) {
   transition-delay: .25s;
 }
 
-body.is-expanded dl dd {
-  font-size: 1.75em;
+body.is-expanded {
+  & dt, & dd, nav > label {
+    font-size: 1.75em;
+  }
 }
 
 body.is-expanded img {
