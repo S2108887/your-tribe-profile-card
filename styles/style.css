@@ -11,6 +11,15 @@
   src: url("../assets/Alegreya-Italic.ttf")
 }
 
+:root {
+  --achtergrondkleur: black;
+  --tekstkleur: white;
+  --achtergrondkleur2: white;
+  --tekstkleur2: black;
+
+  --knopkleur: #00000000;
+  --knopkleuractief: #ff8400;
+}
 
 * {
   box-sizing: border-box; /* uitleg over wat dit is */
@@ -36,7 +45,7 @@ body {
   height: fit-content;
   
   font-family: "Alegreya";
-  color: #10214e; /* de tekst kleur wordt in hex kleuren bepaald. */
+  color: var(--tekstkleur); /* de tekst kleur wordt in hex kleuren bepaald. */
 }
 
 /* ARTICLE */
@@ -57,11 +66,12 @@ article {
   min-width: 20em;
   
   border-radius: 1rem;
-  background: rgb(0 239 255);
-  background: linear-gradient(0deg, rgb(0 239 255) 40%, #4e54c8 100%);
+  background: var(--achtergrondkleur);
   box-shadow: 0 0 20px 20px rgb(0 0 0 / .1);
   
   transition: .25s;
+
+  padding-bottom: 20px;
 }
 
 /* HEADER */
@@ -78,7 +88,7 @@ header {
 h1 {
   margin: 2rem 0 1rem 0; /* Margin is de ruimte om het element heen. Boven beginnen, met de klok mee */
   
-  color: rgb(0 239 255); /* De tekst kleur wordt in rgb() bepaald. */
+  color: var(--tekstkleur); /* De tekst kleur wordt in rgb() bepaald. */
 }
 
 /* P */
@@ -86,15 +96,15 @@ h1 {
 /* Om een element met class te selecteren gebruik je een . in de selector */
 p.slogan {
   font-size:1.25em;
-  color:#030711;
+  color: var(--tekstkleur);
 }
 
 button {
   font-family: "Alegreya";
 
-  border: none;
+  outline: 2px solid var(--tekstkleur);
   border-radius: 50%; /* De border-radius geeft de <button> ronde hoekjes. */
-  background: rgb(0 239 255);
+  background: var(--knopkleur);
 
   transition: .25s; /* Transities op het <button> element duren 0.25 seconden. */
 }
@@ -103,13 +113,11 @@ button {
 /* :hover is een 'Pseudo-class selector', daarmee worden interacties op het element gestyled. */
 button:hover {
   cursor: pointer;
-  background: darkgoldenrod;
 }
 /* Met de 'Pseudo-class selector' :focus kan je bepalen hoe het element er uit moet zien als de tab toets op het toetsenbord wordt gebruikt. */
 button:focus, button:hover {
   outline: none;
-  background: darkgoldenrod;
-  color: lightyellow;
+  background: var(--knopkleuractief);
 }
 
 nav {
@@ -124,16 +132,17 @@ nav > label {
   font-size: 1rem;
   padding: 10px;
 
+  border: 2px solid var(--tekstkleur);
+
   border-radius: 50%;
-  background: rgb(0 239 255);
+  background: var(--knopkleur);
 
   transition: .25s;
 }
 
 nav {
   label:has(> input:checked), label:hover {
-    background: darkgoldenrod;
-    color: lightyellow;
+    background-color: var(--knopkleuractief);
   }
 }
 
@@ -143,11 +152,13 @@ nav input {
 
 dl {
   display: none;
-  background-color: white;
+  background-color: var(--achtergrondkleur2);
   width: 100%;
   padding: 5px;
   margin-top: 5px;
   margin-bottom: 0;
+
+  color: var(--tekstkleur2);
 }
 
 dt {
@@ -160,7 +171,7 @@ html:has( [value="leerdoelen"]:checked) {
   }
 }
 
-html:has( [value="bijbaan"]:checked) {
+html:has( [value="krantenwijk"]:checked) {
   dl:nth-of-type(2) {
     display: block;
   }
@@ -194,7 +205,7 @@ html:has( [value="hobbies"]:checked) {
     top: calc(1.25rem - 12px);
     left: calc(1.25rem - 12px);
     
-    stroke: #4e54c8;
+    stroke: var(--tekstkleur);
     
     transition: .25s;
     transition-delay: .25s; /* Een transitie op het <svg> element begin 0.25 seconde later. */
@@ -270,8 +281,8 @@ body.is-expanded header button svg:nth-of-type(2) {
 }
 
 body.is-expanded {
-  & dt, & dd, nav > label {
-    font-size: 1.75em;
+  dt, dd, nav > label {
+    font-size: 1.2em;
   }
 }
 
