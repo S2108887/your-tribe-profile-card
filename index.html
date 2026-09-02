@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FDND Visitekaartje</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/stylesNieuw.css">
   </head>
   <body>
     
@@ -16,7 +16,7 @@
         
         <p class="slogan"><em>Student Frontend Design & Development</em></p>
         
-        <button>
+        <!-- <button>
           <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <title>Wijzig layout</title>
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -32,62 +32,43 @@
             <path d="M5 15h2a2 2 0 0 1 2 2v2"></path>
             <path d="M5 9h2a2 2 0 0 0 2 -2v-2"></path>
           </svg>
-        </button>
+        </button> -->
         
       </header>
   
-      <img src="assets/Hoofd.svg" alt="" width="800">
-
-      <nav>
-        <label>Leerdoelen<input type="radio" name="locatie" value="leerdoelen" checked></label>
-        <label>Krantenwijk<input type="radio" name="locatie" value="krantenwijk"></label>
-        <label>Hobby's<input type="radio" name="locatie" value="hobbies"></label>
-      </nav>
+      <!-- <img src="assets/Hoofd.svg" alt="" width="800"> -->
       
-      <dl>
-        <dt>Onderwijzen</dt>
-
-        <dt>Effectief taalgebruik</dt>
-
-        <dt>Ontwerpen</dt>
-        <dd>Betere schetsen maken, mooiere opmaak verzinnen</dd>
-
-        <dt>Inkscape</dt>
-        <dd>Ik gebruik het al een beetje, maar ik ben nog niet handig.</dd>
+      <section>
         
-        <dt>Front-end-code maken</dt>
-        <dd>HTML, CSS, Javascript, Svelte, misschien WebAssembly</dd>
-      </dl>
-
-      <dl>
-
-        <dt>Bijbaan</dt>
-        <dt>Lichaamsbeweging</dt>
-        <dd>Rondrennen met een rugzak en je krijgt nog geld ook</dd>
+        <nav><label>Leerdoelen<input type="radio" name="locatie" value="leerdoelen" checked></label></nav>
+        <ul id="leerdoelen">
+          <li>Onderwijzen</li>
+          <li>Effectief taalgebruik</li>
+          <li>
+            <header>Ontwerpen</header>
+            <p>Betere schetsen maken, mooiere opmaak verzinnen</p>
+          </li>
+          <li>
+            <header>Inkscape</header>
+            <p>Ik gebruik het al een beetje, maar ik ben nog niet handig.</p>
+          </li>
+          <li>
+            <header>Frontend-code maken</header>
+            <p>HTML, CSS, Javascript, Svelte, misschien WebAssembly</p>
+          </li>
+        </ul>
         
-        <dt>Elke woensdag</dt>
-        <dd>Het duurt iets langer dan twee uur.</dd>
+        <nav><label>Krantenwijk<input type="radio" name="locatie" value="krantenwijk"></label></nav>
+        <ul>
+          <li>b</li>
+        </ul>
         
-      </dl>
+        <nav><label>Hobby's<input type="radio" name="locatie" value="krantenwijk"></label></nav>
+        <ul>
+          <li>c</li>
+        </ul>
+      </section>
 
-      <dl>
-        <dt>Lezen</dt>
-        <dd>Fantasy, science-fiction, non-fictie</dd>
-        
-        <dt>Pianospelen</dt>
-        <dd>Onder andere Bach, Beethoven en Mozart</dd>
-
-        <dt>Videospellen spelen</dt>
-        <dd>Voornamelijk tweedimensionale of driedimensionale loop-en-spring-videospellen</dd>
-
-        <dt>Videospellen maken</dt>
-        <dd>Dit wil ik nog doen, maar ik heb nog nooit iets groots opgeleverd.</dd>
-        
-        <dt>Sporten</dt>
-        <dd>Zwemmen, hardlopen, boulderen</dd>
-      </dl>
-  
-      
     </article>
 
     <script src="scripts/script.js"></script>
