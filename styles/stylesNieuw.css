@@ -2,6 +2,19 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Alegreya";
+  font-style:  normal;
+  font-feature-settings: "lnum", "tnum";
+  src: url("../assets/Alegreya-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Alegreya";
+  font-style:  italic;
+  src: url("../assets/Alegreya-Italic.ttf")
+}
+
 :root {
     --leegte-kleur: lightyellow;
     --achtergrondkleur: black;
@@ -19,6 +32,16 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--leegte-kleur);
+
+    font-family: "Alegreya";
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+p.slogan {
+    margin: 5px 0;
 }
 
 article {
@@ -26,7 +49,7 @@ article {
     flex-direction: column;
     width: 400px;
 
-    min-height: 500px;
+    min-height: 530px;
     justify-content: start;
     align-items: center;
 
@@ -36,6 +59,8 @@ article {
 
     border-radius: 1rem;
     box-shadow: 0 0 20px 20px rgb(0 0 0 / .1);
+
+    transition: .25s;
 }
 
 article > header {
@@ -51,32 +76,74 @@ section {
     grid-template-rows: repeat(2, fit-content);
     background-color: var(--achtergrondkleur2);
     color: var(--tekstkleur2);
-    
+
+    & > div {
+        display: contents; /*Er komt geen bounding box bij dit element, dus er wordt niet gescrold.*/
+    }
+
     nav {
         grid-row-start: 1;
         grid-row-end: 2;
 
-        &:has(~ nav) {
-            margin-right: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        color: var(--tekstkleur);
+        background-color: var(--achtergrondkleur);
+
+        &::after {
+            content: "🠗";
+            font-size: 2em;
+            visibility: hidden;
         }
 
-        input {
-            display: none;
+        &:has(+ :target)::after {
+            visibility: visible;
         }
+
+        a {
+            color: var(--tekstkleur);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--tekstkleur);
+
+            transition: 0.25s;
+        }
+
+        a:hover {
+            background-color: var(--knopkleuractief);
+        }
+
     }
+
 
     ul {
         display:none;
         grid-row-start: 2;
-        grid-row-end: 3;
+        grid-row-end: 4;
 
         grid-column-start: 1;
-        grid-column-end: 1000;
+        grid-column-end: 4;
 
+        margin: 5px 0;
+
+        padding-left: 20px;
     }
 
-    nav:has(input:checked) + ul {
+    li {
+        font-weight: bold;
+        p {
+            font-weight: normal;
+            margin: 0;
+            margin-left: 10px;
+        }
+    }
+
+    :target > ul {
         display: unset;
     }
+
 }
 
