@@ -54,6 +54,7 @@ button:hover {
 body.is-expanded {
     article {
         width: 600px;
+        height: 460px;
     }
 
     button > svg:nth-child(1) {
@@ -66,6 +67,7 @@ body.is-expanded {
 
 h1 {
     margin-bottom: 0;
+    margin-top: 5px;
 }
 
 p.slogan {
@@ -77,13 +79,12 @@ article {
     flex-direction: column;
     width: 400px;
 
-    min-height: 530px;
+    height: 500px;
     justify-content: start;
     align-items: center;
 
     color: var(--tekstkleur);
     background-color: var(--achtergrondkleur);
-    padding-bottom: 10px;
 
     border-radius: 1rem;
     box-shadow: 0 0 20px 20px rgb(0 0 0 / .1);
@@ -117,11 +118,13 @@ section {
     background-color: var(--achtergrondkleur2);
     color: var(--tekstkleur2);
 
-    & > div {
-        display: contents; /*Er komt geen bounding box bij dit element, dus er wordt niet gescrold.*/
+    details {
+        /*Er komt geen bounding box bij dit element, dus er wordt niet gescrold wanneer je het
+        target via een link.*/
+        display: contents;
     }
 
-    nav {
+    summary {
         grid-row-start: 1;
         grid-row-end: 2;
 
@@ -138,7 +141,7 @@ section {
             visibility: hidden;
         }
 
-        &:has(+ :target)::after {
+        :target &::after {
             visibility: visible;
         }
 
@@ -158,8 +161,7 @@ section {
 
     }
 
-
-    ul {
+    details::details-content {
         display:none;
         grid-row-start: 2;
         grid-row-end: 3;
@@ -168,7 +170,10 @@ section {
         grid-column-end: 4;
 
         margin: 5px 0;
+    }
 
+    ul {
+        margin: 0;
         padding-left: 20px;
         padding-right: 5px;
     }
@@ -182,9 +187,8 @@ section {
         }
     }
 
-    :target > ul {
-        display: unset;
+    details:target::details-content {
+        display: block;
     }
 
 }
-
