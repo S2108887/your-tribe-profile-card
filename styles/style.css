@@ -125,28 +125,24 @@ article > div {
         grid-row-start: 1;
         grid-row-end: 2;
 
-        position: relative;
-
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
         margin-bottom: 20px;
 
+        justify-self: center;
 
-        &::after {
-            content: "🠗";
-            font-size: 2em;
-            visibility: hidden;
-            position: absolute;
-            bottom: -37px;
-        }
-
-        :target &::after {
-            visibility: visible;
-        }
+        display: block;
 
         a {
+            /*
+            Dit doe ik omdat ik de pijl (position: absolute) wil positioneren ten opzichte van de rechthoek
+            van dit a-element.
+            */
+            position: relative;
+            width: fit-content;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
             color: var(--tekstkleur);
             text-decoration: none;
             padding: 10px;
@@ -154,6 +150,18 @@ article > div {
             border: 2px solid var(--tekstkleur);
 
             transition: 0.25s;
+
+            &::after {
+                content: "🠗";
+                font-size: 2em;
+                visibility: hidden;
+                position: absolute;
+                bottom: -37px;
+            }
+
+            :target &::after {
+                visibility: visible;
+            }
         }
 
         a:hover {
