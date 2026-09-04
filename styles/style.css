@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 @font-face {
   font-family: "Alegreya";
   font-style:  normal;
@@ -12,280 +16,185 @@
 }
 
 :root {
-  --achtergrondkleur: black;
-  --tekstkleur: white;
-  --achtergrondkleur2: white;
-  --tekstkleur2: black;
+    --leegte-kleur: lightyellow;
+    --achtergrondkleur: black;
+    --tekstkleur: white;
+    --achtergrondkleur2: white;
+    --tekstkleur2: black;
 
-  --knopkleur: #00000000;
-  --knopkleuractief: #ff8400;
+    --knopkleur: #00000000;
+    --knopkleuractief: #ff8400;
 }
 
-* {
-  box-sizing: border-box; /* uitleg over wat dit is */
-}
-
-/* HTML */
-/* Hier wordt met een 'type selector' een element in de html geselecteerd. */
-/* Dit verwijst naar het <html> element. De <html> krijgt een lichtgele achtergrond. */
-
-html {
-  background:lightyellow;
-}
-
-/* BODY */
-/* Hier wordt met een 'type selector' het <body> element geselecteerd. */
-/* In de <body> wordt de inhoud met "display: flex" in het midden geplaats. */
-/* En krijgt de <body> en alle inhoud een font en kleur. */
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  height: fit-content;
-  
-  font-family: "Alegreya";
-  color: var(--tekstkleur); /* de tekst kleur wordt in hex kleuren bepaald. */
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--leegte-kleur);
 
-/* ARTICLE */
-/* Het <article> element krijgt hier de styling. */
-/* De inhoud wordt met "display: flex" gepositioneerd en uitgelijnd. */
-/* Er wordt een breedte meegegeven, een minimale en maximale breedte. */
-/* Het <article> element krijgt een kleur, en nog meer ... */
-article {
-  position: relative;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  
-  width: 50vw;
-  max-width: 25em;
-  min-width: 20em;
-  
-  border-radius: 1rem;
-  background: var(--achtergrondkleur);
-  box-shadow: 0 0 20px 20px rgb(0 0 0 / .1);
-  
-  transition: .25s;
+    font-family: "Alegreya";
 
-  padding-bottom: 20px;
-}
-
-/* HEADER */
-/* Hier wordt de inhoud van het <header> element gepositioneerd en uitgelijnd. */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-}
-
-/* H1 */
-/* Hier krijgt het <h1> element de styling. */
-h1 {
-  margin: 2rem 0 1rem 0; /* Margin is de ruimte om het element heen. Boven beginnen, met de klok mee */
-  
-  color: var(--tekstkleur); /* De tekst kleur wordt in rgb() bepaald. */
-}
-
-/* P */
-/* Hier krijgt de <p> met de class slogan de styling. */
-/* Om een element met class te selecteren gebruik je een . in de selector */
-p.slogan {
-  font-size:1.25em;
-  color: var(--tekstkleur);
+    button > svg:nth-child(2) {
+        display: none;
+    }
 }
 
 button {
-  font-family: "Alegreya";
-
-  outline: 2px solid var(--tekstkleur);
-  border-radius: 50%; /* De border-radius geeft de <button> ronde hoekjes. */
-  background: var(--knopkleur);
-
-  transition: .25s; /* Transities op het <button> element duren 0.25 seconden. */
+    background-color: var(--knopkleur);
+    transition: 0.25s;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
-/* Om de <button> styling te geven als iemand met de muis over het element beweegt gebruikt je :hover */
-/* :hover is een 'Pseudo-class selector', daarmee worden interacties op het element gestyled. */
 button:hover {
-  cursor: pointer;
-}
-/* Met de 'Pseudo-class selector' :focus kan je bepalen hoe het element er uit moet zien als de tab toets op het toetsenbord wordt gebruikt. */
-button:focus, button:hover {
-  outline: none;
-  background: var(--knopkleuractief);
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
-  margin-bottom: 5px;
-}
-
-nav > label {
-  font-size: 1rem;
-  padding: 10px;
-
-  border: 2px solid var(--tekstkleur);
-
-  border-radius: 50%;
-  background: var(--knopkleur);
-
-  transition: .25s;
-}
-
-nav {
-  label:has(> input:checked), label:hover {
     background-color: var(--knopkleuractief);
-  }
 }
 
-nav input {
-  display: none;
+body.is-expanded {
+    article {
+        width: 600px;
+        height: 460px;
+    }
+
+    button > svg:nth-child(1) {
+        display: none;
+    }
+    button > svg:nth-child(2) {
+        display: unset;
+    }
 }
 
-dl {
-  display: none;
-  background-color: var(--achtergrondkleur2);
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 0;
-
-  color: var(--tekstkleur2);
+h1 {
+    margin-bottom: 0;
+    margin-top: 5px;
 }
 
-dt {
-  font-weight: bold;
+p.slogan {
+    margin: 5px 0;
 }
 
-html:has( [value="leerdoelen"]:checked) {
-  dl:nth-of-type(1) {
-    display: block;
-  }
-}
+article {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
 
-html:has( [value="krantenwijk"]:checked) {
-  dl:nth-of-type(2) {
-    display: block;
-  }
-}
+    height: 500px;
+    justify-content: start;
+    align-items: center;
 
-html:has( [value="hobbies"]:checked) {
-  dl:nth-of-type(3) {
-    display: block;
-  }
-}
+    color: var(--tekstkleur);
+    background-color: var(--achtergrondkleur);
 
-@scope (header) {
-/* BUTTON */
-/* Hier krijgt de <button> de styling. */
-  button {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: .25rem;
-    
-    scale:.8;
-  }
+    border-radius: 1rem;
+    box-shadow: 0 0 20px 20px rgb(0 0 0 / .1);
 
-  /* In het <button> element staat een <svg> voor het icoon. */
-  /* Met een spatie worden alle elementen geselecteerd die in een ander element staan. */
-  button svg {
-    position: absolute;
-    top: calc(1.25rem - 12px);
-    left: calc(1.25rem - 12px);
-    
-    stroke: var(--tekstkleur);
-    
     transition: .25s;
-    transition-delay: .25s; /* Een transitie op het <svg> element begin 0.25 seconde later. */
-  }
-  /* Met een komma wordt in een keer de styling op de :hover en de :focus van het <svg> element bepaald. */
-  button:hover svg, button:focus svg {
-    stroke: lightyellow;
-  }
-  /* Met de 'Pseudo-class selector' :nth-of-type() wordt een element geselecteerd op basis van de volgorde. */
-  /* Hier wordt het tweede <svg> element in de button geselecteerd. */
-  button svg:nth-of-type(2) {
-    opacity: 0;
-    
-    transition-delay: 0ms;
-  }
 }
 
+article > header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 
-
-/* IMG */
-/* Hier krijgt het <img> element de styling. */
-img {
-  position: relative;
-  
-  width: 10em;
-  height: auto;
-  
-  /* border: 5px solid #fff; */
-  /* border-radius: 0; */
-  /* box-shadow: 0 0 2px 2px rgb(0 0 0 /.2); */
-  padding: 5px;
-  
-  transition: 1s .15s; /* Transition Shorthand notation: Transities op het img element duren 1 seconde en beginnen 0.15 seconde later */
+    button {
+        position: absolute;
+        align-self: end;
+        background: none;
+        border-radius: 50%;
+        border: 2px solid var(--tekstkleur);
+        svg {
+            stroke: white;
+        }
+    }
 }
 
-/* P */
-/* Hier krijgen alle <p> elementen een styling. */
-p {
-  margin: 0;
-}
+article > div {
+    width: 100%;
+    display: grid;
 
-/* Om alleen de <p> elementen te stylen die in het <article> staat gebruik je de > de 'Child combinator selector'.
-/* Met de 'Child combinator selector' selecteer je alle <p> elementen die een directe  kinderen van het <article> zijn. */
-/* Dit selecteert dus niet de <p> in de <header>. */
-article > p {
-  width: 100%;
-  margin-top: 0;
-  padding: 3rem 2rem;
-  
-  background: rgb(255 255 255 / 0.5);
-  border-radius: 0 0 1rem 1rem;
-  text-align: center;
-}
+    details {
+        /*Er komt geen bounding box bij dit element, dus er wordt niet gescrold wanneer je het
+        target via een link.*/
+        display: contents;
+    }
 
-/* Deze styles zijn van toepassing als op de knop wordt geklikt */
-body.is-expanded {
-  font-size: 1.15em;
-}
+    summary {
+        grid-row-start: 1;
+        grid-row-end: 2;
 
-body.is-expanded article {
-  width: 60vw;
-  max-width: 60vw;
-}
+        position: relative;
 
-body.is-expanded header button svg:first-of-type {
-  opacity: 0;
-  transition-delay: 0ms;
-}
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
-body.is-expanded header button svg:nth-of-type(2) {
-  opacity: 1;
-  transition-delay: .25s;
-}
+        margin-bottom: 20px;
 
-body.is-expanded {
-  dt, dd, nav > label {
-    font-size: 1.2em;
-  }
-}
 
-body.is-expanded img {
-  width: 15em;
+        &::after {
+            content: "🠗";
+            font-size: 2em;
+            visibility: hidden;
+            position: absolute;
+            bottom: -37px;
+        }
+
+        :target &::after {
+            visibility: visible;
+        }
+
+        a {
+            color: var(--tekstkleur);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--tekstkleur);
+
+            transition: 0.25s;
+        }
+
+        a:hover {
+            background-color: var(--knopkleuractief);
+        }
+
+    }
+
+    details::details-content {
+        display:none;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+        grid-column-start: 1;
+        grid-column-end: 4;
+
+        margin: 5px 0;
+    }
+
+    ul {
+
+        background-color: var(--achtergrondkleur2);
+        color: var(--tekstkleur2);
+
+        margin: 0;
+        margin-top: 5px;
+        padding-left: 20px;
+        padding-right: 5px;
+    }
+
+    li {
+        font-weight: bold;
+        p {
+            font-weight: normal;
+            margin: 0;
+            margin-left: 10px;
+        }
+    }
+
+    details:target::details-content {
+        display: block;
+    }
+
 }
