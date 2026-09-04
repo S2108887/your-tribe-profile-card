@@ -146,8 +146,33 @@ article > div {
             color: var(--tekstkleur);
             text-decoration: none;
             padding: 10px;
-            border-radius: 50%;
-            border: 2px solid var(--tekstkleur);
+
+            /*De ::before regelt de hover-kleur. De hover-kleur mag echter niet boven de linktekst verschijnen.*/
+            z-index: 2;
+
+            /*
+            Ik wil een afgeronde rand, maar de klikbare box van de <a> moet een rechthoek zijn. Anders
+            kan je namelijk op de <summary> klikken zonder dat je op de <a> klikt en klapt het
+            details-element dicht.
+            */
+            &::before {
+                position: absolute;
+                border-radius: 50%;
+                border: 2px solid var(--tekstkleur);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                /*Zonder content-attribuut verschijnt de rand niet.*/
+                content: "";
+
+                /*De hover-kleur mag niet boven de linktekst verschijnen. Waarde 1 werkt niet.*/
+                z-index: -1;
+            }
+
+            &:hover::before {
+                background-color: var(--knopkleuractief);
+            }
 
             transition: 0.25s;
 
@@ -162,10 +187,6 @@ article > div {
             :target &::after {
                 visibility: visible;
             }
-        }
-
-        a:hover {
-            background-color: var(--knopkleuractief);
         }
 
     }
