@@ -168,23 +168,23 @@ article > div {
 
                 /*De hover-kleur mag niet boven de linktekst verschijnen. Waarde 1 werkt niet.*/
                 z-index: -1;
+
+                transition: 0.25s;
             }
 
             &:hover::before {
                 background-color: var(--knopkleuractief);
             }
 
-            transition: 0.25s;
-
-            &::after {
-                content: "🠗";
+            & > img {
+                height: 25px;
                 font-size: 2em;
                 visibility: hidden;
                 position: absolute;
-                bottom: -37px;
+                bottom: -28px;
             }
 
-            :target &::after {
+            :target & > img {
                 visibility: visible;
             }
         }
